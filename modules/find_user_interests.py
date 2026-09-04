@@ -30,27 +30,4 @@ def find_user_interests(db_path, user_id):
     df = pd.read_sql_query(query, conn, params=(user_id,))
     conn.close()
 
-    if df.empty:
-        print(f"No activity found for user '{user_id}' in Users_data.")
-        return [], []
-
-    # Normalize user ratings
-    scaler = MinMaxScaler()
-    df["normalized_rate"] = scaler.fit_transform(df[[col1]])
-    df["like_weight"] = df[col2].astype(int)
-
-    # Calculate the final score combining normalized rating and like weight
-    df["final_score"] = w1 * df["normalized_rate"] + w2 * df["like_weight"]
-    # Sort the DataFrame by the final score in descending order
-    df = df.sort_values(by="final_score", ascending=False)
-    top_list = len(df) // 3 
-    df = df.head(top_list)
-
-    # convert to lowercase and split by comma+space
-    df["genres"] = df["genres"].str.lower().str.split(", ")
-    df["keywords"] = df["keywords"].str.lower().str.split(", ")
-
-    top_genres = Counter(chain.from_iterable(df["genres"].dropna())).most_common(top_n_genres)
-    top_keywords = Counter(chain.from_iterable(df["keywords"].dropna())).most_common(top_n_keywords)
-
     return [g[0] for g in top_genres], [k[0] for k in top_keywords]
