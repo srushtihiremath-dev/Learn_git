@@ -317,24 +317,6 @@ a{ color: inherit; text-decoration:none; }
   max-width: 1280px;
   margin: 0 auto;
 }
-.section__head{ margin-bottom: 56px; }
-.section__num{
-  font-family: var(--font-mono);
-  color: var(--gold-dim);
-  font-size: 0.85rem;
-}
-.section__title{
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  margin: 8px 0 0;
-  letter-spacing: -0.01em;
-}
-.section__sub{
-  color: var(--ivory-dim);
-  margin-top: 12px;
-  font-size: 1rem;
-}
 
 .reveal{
   opacity:0;
