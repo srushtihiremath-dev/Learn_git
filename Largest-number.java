@@ -9,11 +9,7 @@ public class Largest-number {
         else if (a > c)
         {
             System.out.println("a is greater than c");
-        
         }
-        else if (b > c)
-        {
-            System.out.println("b is greater than c");
         
         }
         else {
