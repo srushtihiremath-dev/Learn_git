@@ -3,7 +3,7 @@ try:
     import pandas as pd  
 except ImportError as error: # Colored error message with ANSI codes
     print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
-
+# Change the working directory to the parent directory of the current file.
 def catch_watched_movies(db_path, user_id):
     """
     Gets watched movie_id-s by user
